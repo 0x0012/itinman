@@ -1,39 +1,24 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
-
 import reflex as rx
+from .pages import *
 
-from rxconfig import config
+base_stylesheets = [
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+]
 
+base_style = {
+    "font_family": "Inter",
+}
 
-class State(rx.State):
-    """The app state."""
+app = rx.App(
+    style=base_style,
+    stylesheets=base_stylesheets,
+    theme=rx.theme(
+        appearance="light", has_background=True, radius="large", accent_color="orange"
+    ),
+)
 
-    ...
-
-
-def index() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
-            ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
-        ),
-        rx.logo(),
-    )
-
-
-app = rx.App()
-app.add_page(index)
+app.add_page(
+    index,
+    title="itinman",
+    description="IT Inventory Manager.",
+)
