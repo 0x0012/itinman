@@ -1,5 +1,4 @@
 import reflex as rx
-from reflex.components.radix.themes.layout.stack import hstack
 
 md_red = '#a90533'
 md_grey = '#5f6062'
@@ -30,14 +29,15 @@ def main_panel() -> rx.Component:
 
 def footer() -> rx.Component:
     return rx.center(
-        rx.text('by 0x0012', align='center', weight='light', color=md_grey),
-        width = '100%'
+        rx.text('by 0x0012', align='center', weight='light', color='white'),
+        width = '100%',
+        background = md_grey
     )
 
 def index() -> rx.Component:
     return rx.vstack(
         header(),
-        hstack(
+        rx.hstack(
             side_panel(),
             main_panel(),
             widht = '100%',
